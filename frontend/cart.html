@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>My Cart</h1>
+    <a href="./index.html">Back to Home</a>
+
+    <div id="cart-items"></div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded',() => {
+        fetchCartItems()
+    })
+
+    function fetchCartItems(){
+        let cart = JSON.parse(localStorage.getItem('cart')) || []
+        cartItems = document.getElementById('cart-items')
+       
+        cart.forEach(item => {
+
+            console.log(item)
+            var card = document.createElement('div');
+
+            let productImage = document.createElement('img');
+            productImage.src = item.imageUrl;
+            card.appendChild(productImage)
+
+            let productName = document.createElement('h3');
+            productName.textContent = item.productName;
+            card.appendChild(productName)
+
+            cartItems.appendChild(card)
+        });
+
+        
+
+    }
+</script>
+</html>
